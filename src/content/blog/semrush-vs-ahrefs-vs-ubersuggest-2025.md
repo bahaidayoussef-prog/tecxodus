@@ -1,6 +1,6 @@
 ---
-title: 'Meilleur outil SEO 2025 : Semrush vs Ahrefs vs Ubersuggest — Comparatif Complet'
-description: 'Semrush, Ahrefs ou Ubersuggest : lequel choisir en 2025 ? Comparatif prix, fonctionnalités et cas d'usage. Semrush gagne pour les agences, Ahrefs pour les backlinks.'
+title: "Meilleur outil SEO 2025 : Semrush vs Ahrefs vs Ubersuggest - Comparatif Complet"
+description: "Semrush, Ahrefs ou Ubersuggest : lequel choisir en 2025 ? Comparatif prix, fonctionnalites et cas d'usage. Semrush gagne pour les agences, Ahrefs pour les backlinks."
 pubDate: '2025-05-10'
 heroImage: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=1200&h=630&fit=crop&q=80'
 ---

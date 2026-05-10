@@ -1,6 +1,6 @@
 ---
-title: 'Meilleur VPN 2025 : NordVPN vs ExpressVPN vs Surfshark — Comparatif Complet'
-description: 'NordVPN, ExpressVPN ou Surfshark : lequel choisir en 2025 ? Comparatif vitesse, prix, sécurité et confidentialité. NordVPN gagne pour le rapport qualité-prix.'
+title: "Meilleur VPN 2025 : NordVPN vs ExpressVPN vs Surfshark - Comparatif Complet"
+description: "NordVPN, ExpressVPN ou Surfshark : lequel choisir en 2025 ? Comparatif vitesse, prix, securite et confidentialite. NordVPN gagne pour le rapport qualite-prix."
 pubDate: '2025-05-11'
 heroImage: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=630&fit=crop&q=80'
 ---
