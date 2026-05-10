@@ -1,38 +1,227 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 6);
 ---
 
 <!doctype html>
 <html lang="fr">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>Trouvez le meilleur outil SaaS pour votre entreprise</h1>
-			<p>Comparatifs honnêtes, avis détaillés et guides pratiques pour choisir les logiciels qui font vraiment la différence.</p>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
 
-			<h2>Catégories populaires</h2>
-			<ul>
-				<li><a href="/crm/">CRM & Ventes</a></li>
-				<li><a href="/marketing/">Marketing & SEO</a></li>
-				<li><a href="/securite/">VPN & Cybersécurité</a></li>
-				<li><a href="/hebergement/">Hébergement web</a></li>
-				<li><a href="/gestion-projet/">Gestion de projet</a></li>
-				<li><a href="/comptabilite/">Comptabilité</a></li>
-			</ul>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero-badge">✦ Comparatifs 100% indépendants</div>
 
-			<h2>Derniers comparatifs</h2>
-			<p><a href="/blog/">Voir tous les articles →</a></p>
+      <h1>
+        Trouvez le <span>meilleur outil SaaS</span><br />
+        pour votre business
+      </h1>
 
-			<p style="font-size: 0.85em; color: #666;">
-				<em>Disclosure : Ce site contient des liens affiliés. Si vous achetez via nos liens, nous percevons une commission sans coût supplémentaire pour vous.</em>
-			</p>
-		</main>
-		<Footer />
-	</body>
+      <p class="hero-sub">
+        Comparatifs honnêtes, tableaux de prix actualisés et avis d'experts pour choisir les logiciels qui font vraiment la différence — sans perdre de temps ni d'argent.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/blog/" class="btn btn-primary">
+          Voir tous les comparatifs →
+        </a>
+        <a href="#categories" class="btn btn-outline">
+          Explorer les catégories
+        </a>
+      </div>
+
+      <div style="margin: 0 auto 2.5rem; max-width: 800px; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.1);">
+        <img
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_3DXAw9HRlsFsQmRSd6LsjBly8Yl/hf_20260510_233303_24102199-4a9a-41c5-aaea-2330deaabc8a_min.webp"
+          alt="Interface comparateur SaaS Tecxodus"
+          width="800" height="450"
+          style="width:100%;height:auto;display:block;"
+          loading="eager"
+        />
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>30+</strong>
+          <span>Outils analysés</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <strong>6</strong>
+          <span>Catégories</span>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat">
+          <strong>100%</strong>
+          <span>Indépendant</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TRUST BAR ===== -->
+    <div class="trust-bar">
+      <div class="trust-bar-inner">
+        <span class="trust-label">Outils comparés</span>
+        <div class="trust-tools">
+          <span class="trust-tool-badge">🔍 Semrush</span>
+          <span class="trust-tool-badge">🔗 Ahrefs</span>
+          <span class="trust-tool-badge">🔒 NordVPN</span>
+          <span class="trust-tool-badge">📊 HubSpot</span>
+          <span class="trust-tool-badge">🌐 Hostinger</span>
+          <span class="trust-tool-badge">✅ ClickUp</span>
+          <span class="trust-tool-badge">📝 Notion</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CATEGORIES ===== -->
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Catégories</span>
+          <h2>Explorez par domaine</h2>
+          <p>Des comparatifs approfondis dans chaque catégorie, mis à jour régulièrement avec les derniers prix et fonctionnalités.</p>
+        </div>
+
+        <div class="categories-grid">
+          <a href="/crm/" class="category-card">
+            <div class="category-icon">📊</div>
+            <h3>CRM & Ventes</h3>
+            <p>HubSpot, Salesforce, monday.com</p>
+          </a>
+          <a href="/marketing/" class="category-card">
+            <div class="category-icon">🚀</div>
+            <h3>Marketing & SEO</h3>
+            <p>Semrush, Ahrefs, Mailchimp</p>
+          </a>
+          <a href="/securite/" class="category-card">
+            <div class="category-icon">🔒</div>
+            <h3>VPN & Sécurité</h3>
+            <p>NordVPN, ExpressVPN, Surfshark</p>
+          </a>
+          <a href="/hebergement/" class="category-card">
+            <div class="category-icon">🌐</div>
+            <h3>Hébergement web</h3>
+            <p>Hostinger, Bluehost, Kinsta</p>
+          </a>
+          <a href="/gestion-projet/" class="category-card">
+            <div class="category-icon">✅</div>
+            <h3>Gestion de projet</h3>
+            <p>ClickUp, Notion, Asana</p>
+          </a>
+          <a href="/comptabilite/" class="category-card">
+            <div class="category-icon">💰</div>
+            <h3>Comptabilité</h3>
+            <p>QuickBooks, FreshBooks, Pennylane</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LATEST ARTICLES ===== -->
+    {posts.length > 0 && (
+      <section class="section" style="background: var(--gray-light); padding: 5rem 0;">
+        <div class="container">
+          <div class="section-header">
+            <span class="section-label">Derniers comparatifs</span>
+            <h2>Nos analyses récentes</h2>
+            <p>Chaque comparatif inclut des tableaux de prix actualisés, des tests réels et une recommandation claire.</p>
+          </div>
+
+          <div class="articles-grid">
+            {posts.map((post) => (
+              <a href={`/blog/${post.id}/`} class="article-card" style="text-decoration:none;">
+                {post.data.heroImage && (
+                  <img
+                    src={post.data.heroImage}
+                    alt={post.data.title}
+                    width={640}
+                    height={200}
+                    loading="lazy"
+                  />
+                )}
+                <div class="article-card-body">
+                  <span class="article-tag">Comparatif</span>
+                  <h3>{post.data.title}</h3>
+                  <p>{post.data.description}</p>
+                  <div class="article-card-footer">
+                    <span class="article-read-more">Lire le comparatif →</span>
+                    <span style="font-size:0.8rem;color:var(--gray);">
+                      {post.data.pubDate.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    </span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div style="text-align:center; margin-top:2.5rem;">
+            <a href="/blog/" class="btn btn-primary">Voir tous les comparatifs</a>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Notre méthode</span>
+          <h2>Comment on choisit nos recommandations</h2>
+          <p>Nos comparatifs sont basés sur des tests réels, des données de prix officielles et des centaines d'avis vérifiés.</p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Recherche approfondie</h3>
+            <p>Analyse des fonctionnalités, prix officiels, et politique de remboursement de chaque outil.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Test sur cas réels</h3>
+            <p>Chaque outil est testé sur des cas d'usage concrets : PME, freelances, e-commerce.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Avis & données G2/Capterra</h3>
+            <p>On croise nos tests avec les avis vérifiés de milliers d'utilisateurs réels.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Recommandation claire</h3>
+            <p>Un verdict net avec la meilleure option selon votre profil et votre budget.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA BANNER ===== -->
+    <section style="padding: 0 0 5rem;">
+      <div class="cta-banner">
+        <h2>Pas sûr de quel outil choisir ?</h2>
+        <p>Parcourez nos comparatifs détaillés ou explorez les catégories pour trouver la solution adaptée à vos besoins.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="/blog/" class="btn btn-primary" style="background:white;color:var(--primary);">
+            Voir les comparatifs
+          </a>
+          <a href="#categories" class="btn btn-outline">
+            Explorer les catégories
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </body>
 </html>
